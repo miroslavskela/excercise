@@ -1,15 +1,10 @@
 'use strict';
 var mongoose = require('mongoose');
-var uuid = require('uuid')
 var Schema = mongoose.Schema;
 
 
+
 var UserSchema = new Schema({
-    id: {
-        type: String,
-        unique: true,
-        default:uuid()
-      },
       name: {
         type: String,
         required: true,

@@ -35,7 +35,7 @@ exports.read_a_user = function(req, res) {
 
 
 exports.update_a_user = function(req, res) {
-  Task.findOneAndUpdate({_id: req.params.userId}, req.body, {new: true}, function(err, user) {
+  User.findOneAndUpdate({_id: req.params.userId}, req.body, {new: true}, function(err, user) {
     if (err)
       res.send(err);
     res.json(user);
@@ -46,7 +46,7 @@ exports.update_a_user = function(req, res) {
 exports.delete_a_user = function(req, res) {
 
 
-  Task.remove({
+  User.remove({
     _id: req.params.userId
   }, function(err, user) {
     if (err)
