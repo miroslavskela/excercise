@@ -18,7 +18,7 @@ import {
           ...state,
           users: action.payload.data
         };
-      
+     
       case ADD_USER:
         return {
           ...state,

@@ -17,12 +17,18 @@ class UpdateUser extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.getUser(id);
+    this.props.getUser(id)
+    .then(() => {
+        
+    })
+    .catch(error => window.alert(error.message))
   }
+
   componentWillReceiveProps(nextProps, nextState) {  
     const { name,surname, city, address, phone } = nextProps.user;
     this.setState({ name, surname, city, address, phone });
   }
+
   onSubmit = e => {
     e.preventDefault();
     const { name, surname, address, city, phone } = this.state;
@@ -54,10 +60,13 @@ class UpdateUser extends Component {
         city,
         phone
     };
-    this.props.updateUser(id, updatedUser);
+    this.props.updateUser(id, updatedUser)
+    .then(() => { 
+        this.setState({ name: "", surname: "",city:"", address:"", phone: "", errors: {} });
+        this.props.history.push("/");
+     })
+     .catch(error => window.alert(error.message))
 
-    this.setState({ name: "", surname: "",city:"", address:"", phone: "", errors: {} });
-    this.props.history.push("/");
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -67,7 +76,7 @@ class UpdateUser extends Component {
 
     return (
       <div className="card mb-3">
-        <div className="card-header">Add Contact</div>
+        <div className="card-header">Update User</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <InputGroup

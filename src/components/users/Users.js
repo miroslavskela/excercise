@@ -1,5 +1,6 @@
 import React , { Component, Fragment } from 'react';
 import User from "./User";
+import Loader from '../partials/Loader'
 import { connect } from "react-redux";
 import { getUsers } from "../../actions/index";
 import PropTypes from "prop-types";
@@ -7,13 +8,18 @@ import PropTypes from "prop-types";
 class Users extends Component {
 
     componentDidMount() {
-        this.props.getUsers();
+        this.props.getUsers()
+        .catch(error => window.alert(error.message))
       }
-
-    render() {
-        const { users } = this.props;
+      componentWillReceiveProps(nextProps) {  
+        nextProps.getUsers()
+        .catch(error => window.alert(error.message))
+      }
+      
+      render() {
+        const { users } = this.props;  
         if(!users){
-            return (<h1> Loading...</h1>)
+            return (<Loader/>)
         }
         return (
           <Fragment>

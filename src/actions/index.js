@@ -18,14 +18,15 @@ export function getUsers() {
 }
 
 export function addUser(props) {
-  const request = axios.post(`${ROOT_URL}`, props,  {headers: {
-    'Content-Type': 'application/json',
-}});
+
+  const request = axios.post(`${ROOT_URL}`, props)
+  
 
   return {
     type: ADD_USER,
     payload: request
   };
+ 
 }
 
 export function getUser(id) {
@@ -44,10 +45,11 @@ export function deleteUser(id) {
     type: DELETE_USER,
     payload: request
   };
+   
 }
 
 export function updateUser(id, props) {
-    const request = axios.put(`${ROOT_URL}/${id}`, props);
+    const request = axios.put(`${ROOT_URL}/${11}`, props);
   
     return {
       type: UPDATE_USER,

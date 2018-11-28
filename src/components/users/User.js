@@ -13,9 +13,13 @@ class User extends Component {
   onShowClick = () => {
     this.setState({ showUserInfo: !this.state.showUserInfo });
   };
+  
   onDeleteClick = id => {
+    if(confirm('Are you sure?')){
     this.props.deleteUser(id)
-    window.location.reload();
+    .catch(error => window.alert(error.message))
+  }
+    
   };
 
   render() {

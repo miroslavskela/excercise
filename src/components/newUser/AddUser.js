@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { addUser } from "../../actions/index";
 
 import InputGroup from "../partials/InputGroup";
-import axios from "axios";
+
 
 class AddUser extends Component {
   state = {
@@ -13,7 +13,8 @@ class AddUser extends Component {
           city: "",
           address:"",
           phone: "",
-          errors: {}
+          errors: {},
+          info:false
         };
     
   onSubmit = e => {
@@ -44,12 +45,20 @@ class AddUser extends Component {
       surname,
       address,
       city,
-      phone
+      phone,
     };
-    this.props.addUser(newUser);
 
-    this.setState({ name: "", surname: "",city:"", address:"", phone: "", errors: {} });
-    this.props.history.push("/");
+    this.props.addUser(newUser)
+    .then(() => {
+        this.setState({ name: "", surname: "",city:"", address:"", phone: "", errors: {}});
+        this.props.history.push("/");
+    })
+    .catch((error) => {
+        window.alert(error.message);
+    })
+    
+  
+
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -58,8 +67,10 @@ class AddUser extends Component {
     const { name,surname, city, address, phone, errors } = this.state;
 
     return (
+
+   
       <div className="card mb-3">
-        <div className="card-header">Add Contact</div>
+        <div className="card-header">Add User</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <InputGroup
@@ -110,6 +121,7 @@ class AddUser extends Component {
           </form>
         </div>
       </div>
+      
     );
   }
 }
