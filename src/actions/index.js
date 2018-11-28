@@ -9,7 +9,7 @@ import axios from "axios";
 const ROOT_URL = 'http://localhost:3000/users'
 
 export function getUsers() {
-  const request = axios.get('http://localhost:3000/users');
+  const request = axios.get(ROOT_URL);
 
   return {
     type: GET_USERS,
@@ -18,7 +18,9 @@ export function getUsers() {
 }
 
 export function addUser(props) {
-  const request = axios.post(`${ROOT_URL}`, props);
+  const request = axios.post(`${ROOT_URL}`, props,  {headers: {
+    'Content-Type': 'application/json',
+}});
 
   return {
     type: ADD_USER,
@@ -44,8 +46,8 @@ export function deleteUser(id) {
   };
 }
 
-export function updateUser(id) {
-    const request = axios.put(`${ROOT_URL}/${id}`);
+export function updateUser(id, props) {
+    const request = axios.put(`${ROOT_URL}/${id}`, props);
   
     return {
       type: UPDATE_USER,

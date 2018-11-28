@@ -5,9 +5,6 @@ import { getUsers } from "../../actions/index";
 import PropTypes from "prop-types";
 
 class Users extends Component {
-    constructor(props){
-        super(props)
-    }
 
     componentDidMount() {
         this.props.getUsers();

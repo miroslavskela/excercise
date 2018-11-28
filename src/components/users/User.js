@@ -2,19 +2,20 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { deleteUser } from "../../actions/index";
+import { Link } from 'react-router-dom';
 
 class User extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-          showUserInfo: false
-        };
-    }
+    
+  state = {
+      showUserInfo: false
+      };
+   
   onShowClick = () => {
     this.setState({ showUserInfo: !this.state.showUserInfo });
   };
   onDeleteClick = id => {
-    this.props.deleteContact(id);
+    this.props.deleteUser(id)
+    window.location.reload();
   };
 
   render() {
@@ -34,7 +35,7 @@ class User extends Component {
             style={{ cursor: "pointer", float: "right", color: "red" }}
             onClick={this.onDeleteClick.bind(this, _id)}
           />
-          <a href={`contact/edit/${_id}`}>
+          <Link to={`user/edit/${_id}`}>
             <i
               className="fas fa-pencil-alt"
               style={{
@@ -44,7 +45,7 @@ class User extends Component {
                 marginRight: "1rem"
               }}
             />
-          </a>
+          </Link>
         </h4>
         {showUserInfo ? (
           <ul className="list-group">
@@ -67,6 +68,7 @@ User.propTypes = {
   user: PropTypes.object.isRequired,
   deleteUser: PropTypes.func.isRequired
 };
+
 
 export default connect(
   null,

@@ -8,28 +8,28 @@ const Header = props => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0">
       <div className="container">
-        <a href="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           {branding}{" "}
-        </a>
+        </Link>
         <div />
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a href="/" className="nav-link">
+            <Link to="/" className="nav-link">
               <i className="fas fa-home" />
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="/contact/add" className="nav-link">
+            <Link to="/user/add" className="nav-link">
               <i className="fas fa-plus" />
               Add
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="/about" className="nav-link">
+            <Link to="/about" className="nav-link">
               <i className="fas fa-question" />
               About
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
