@@ -4,7 +4,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     User = require('./api/models/userModel'), //created model loading here
     bodyParser = require('body-parser'),
-    cors = require('cors');
+    cors = require('cors'),
+    routes = require('./api/routes/userRoutes'); //importing route
 
 
   
@@ -19,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-var routes = require('./api/routes/userRoutes'); //importing route
 routes(app); //register the route
 
 app.use(function(req, res) {

@@ -116,7 +116,7 @@ class AddUser extends Component {
             <input
               type="submit"
               value="Add User"
-              className="btn btn-light btn-block"
+              className="btn btn-danger btn-block"
             />
           </form>
         </div>

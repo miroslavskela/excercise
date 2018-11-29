@@ -18,9 +18,6 @@ class UpdateUser extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.getUser(id)
-    .then(() => {
-        
-    })
     .catch(error => window.alert(error.message))
   }
 
@@ -122,7 +119,7 @@ class UpdateUser extends Component {
             <input
               type="submit"
               value="Update User"
-              className="btn btn-light btn-block"
+              className="btn btn-danger btn-block"
             />
           </form>
         </div>

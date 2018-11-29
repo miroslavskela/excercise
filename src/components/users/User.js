@@ -36,17 +36,20 @@ class User extends Component {
         <h4>
           {name} {surname}
           <i
+            title="Details"
             onClick={this.onShowClick}
             className="fas fa-sort-down"
             style={{ cursor: "pointer" }}
           />
           <i
+            title="Delete"          
             className="fas fa-times"
             style={{ cursor: "pointer", float: "right", color: "red" }}
             onClick={this.onDeleteClick.bind(this, _id)}
           />
           <Link to={`user/edit/${_id}`}>
             <i
+              title="Edit"            
               className="fas fa-pencil-alt"
               style={{
                 cursor: "pointer",
