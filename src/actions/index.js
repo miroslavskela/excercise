@@ -49,7 +49,7 @@ export function deleteUser(id) {
 }
 
 export function updateUser(id, props) {
-    const request = axios.put(`${ROOT_URL}/${11}`, props);
+    const request = axios.put(`${ROOT_URL}/${id}`, props);
   
     return {
       type: UPDATE_USER,

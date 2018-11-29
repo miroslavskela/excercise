@@ -11,10 +11,8 @@ class Users extends Component {
         this.props.getUsers()
         .catch(error => window.alert(error.message))
       }
-      componentWillReceiveProps(nextProps) {  
-        nextProps.getUsers()
-        .catch(error => window.alert(error.message))
-      }
+      
+      
       
       render() {
         const { users } = this.props;  

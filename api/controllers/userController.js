@@ -51,6 +51,6 @@ exports.delete_a_user = function(req, res) {
   }, function(err, user) {
     if (err)
       res.send(err);
-    res.json({ message: 'User successfully deleted' });
+    res.json(req.params);
   });
 };

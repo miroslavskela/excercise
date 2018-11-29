@@ -13,9 +13,9 @@ var UserSchema = new Schema({
         type: String,
         required: true,
       },
-      Created_date: {
+      created_date: {
         type: Date,
-        default: Date.now
+        default: new Date()
       },
       city: {
         type: String,

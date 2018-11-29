@@ -29,6 +29,15 @@ import {
           ...state,
         user: action.payload.data
         };
+
+        case DELETE_USER:
+        return {
+          ...state,
+          users: state.users.filter(
+            user => user._id !== action.payload.data.userId 
+          )
+        };
+       
       
       default:
         return state;

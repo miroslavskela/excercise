@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { deleteUser } from "../../actions/index";
 import { Link } from 'react-router-dom';
+import { createDecipher } from "crypto";
 
 class User extends Component {
     
@@ -22,8 +23,13 @@ class User extends Component {
     
   };
 
+  getTime = (t) => {
+    const time = new Date(t)
+    return `${time.getDate()}:${time.getMonth() + 1}:${time.getFullYear()}`
+  }
+
   render() {
-    const { name, surname, city, address, phone, _id } = this.props.user;
+    const { name, surname, city, address, phone, _id, created_date } = this.props.user;
     const { showUserInfo } = this.state;
     return (
       <div className="card card-body mb-3">
@@ -54,13 +60,16 @@ class User extends Component {
         {showUserInfo ? (
           <ul className="list-group">
             <li className="list-group-item">
-              City: {city}
+            <span className="text-danger">City:</span> {city}
             </li>
             <li className="list-group-item">
-              Address: {address}
+            <span className="text-danger">Address:</span> {address}
             </li>
             <li className="list-group-item">
-              Phone: {phone}
+            <span className="text-danger">Phone:</span> {phone}
+            </li>
+            <li className="list-group-item">
+            <span className="text-danger">Creation Date:</span> {this.getTime(created_date)}
             </li>
           </ul>
         ) : null}
@@ -72,6 +81,7 @@ User.propTypes = {
   user: PropTypes.object.isRequired,
   deleteUser: PropTypes.func.isRequired
 };
+
 
 
 export default connect(
