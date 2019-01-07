@@ -10,6 +10,10 @@ class Users extends Component {
     componentDidMount() {
         this.props.getUsers()
         .catch(error => window.alert(error.message))
+        console.log(this.props.users)
+      }
+      componentWillReceiveProps(nextProps){
+        console.log(nextProps);
       }
       
       

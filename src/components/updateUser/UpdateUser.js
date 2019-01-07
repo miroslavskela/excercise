@@ -19,11 +19,13 @@ class UpdateUser extends Component {
     const { id } = this.props.match.params;
     this.props.getUser(id)
     .catch(error => window.alert(error.message))
+    console.log(this.props.user)
   }
 
   componentWillReceiveProps(nextProps, nextState) {  
     const { name,surname, city, address, phone } = nextProps.user;
     this.setState({ name, surname, city, address, phone });
+    console.log(nextProps.user)
   }
 
   onSubmit = e => {
