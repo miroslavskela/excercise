@@ -13,7 +13,7 @@ class Users extends Component {
         console.log(this.props.users)
       }
       componentWillReceiveProps(nextProps){
-        console.log(nextProps);
+        console.log(nextProps.users);
       }
       
       
